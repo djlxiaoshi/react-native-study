@@ -6,8 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,34 +15,23 @@ import {
   Text,
   useColorScheme,
   View,
+  Dimensions,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  useEffect(() => {}, []);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+    <SafeAreaView style={styles.container}>
+      <StatusBar
+        hidden={false}
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor="red"
+      />
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <View>
           <Text>Test</Text>
         </View>
       </ScrollView>
@@ -52,6 +40,9 @@ const App: () => Node = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    height: Dimensions.get('window').height,
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
