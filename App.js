@@ -5,7 +5,6 @@
  * @format
  * @flow strict-local
  */
-
 import React, {useEffect} from 'react';
 import {
   SafeAreaView,
@@ -16,7 +15,16 @@ import {
   useColorScheme,
   View,
   Dimensions,
+  Button,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+import HomePage from './pages/Home';
+import AboutPage from './pages/About';
+import TestPage from './pages/Test';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,11 +38,17 @@ const App = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor="red"
       />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View>
-          <Text>Test</Text>
-        </View>
-      </ScrollView>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Home"
+            component={HomePage}
+            options={{title: 'home test'}}
+          />
+          <Stack.Screen name="About" component={AboutPage} />
+          <Stack.Screen name="Test" component={TestPage} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
 };
