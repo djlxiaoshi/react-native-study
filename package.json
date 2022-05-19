@@ -1,0 +1,58 @@
+{
+  "name": "reactnativeapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "build-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output dist/android/index.android.bundle.js --assets-dest dist/android/assets --sourcemap-output dist/android/index.android.bundle.js.map --minify true",
+    "build-ios": "react-native bundle --platform ios --dev false --entry-file index.js --bundle-output dist/ios/index.ios.bundle.js --assets-dest dist/ios/assets --sourcemap-output dist/ios/index.ios.bundle.js.map --minify true",
+    "bundle-analyze": "react-native-bundle-visualizer"
+  },
+  "dependencies": {
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/stack": "^6.2.1",
+    "lodash": "^4.17.21",
+    "react": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-gesture-handler": "^2.4.2",
+    "react-native-safe-area-context": "^4.2.5",
+    "react-native-screens": "^3.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.182",
+    "@types/react-native": "^0.67.3",
+    "@types/react-test-renderer": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-lodash": "^3.3.4",
+    "eslint": "^7.32.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.67.0",
+    "react-native-bundle-visualizer": "^3.1.1",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.4.4"
+  },
+  "resolutions": {
+    "@types/react": "^17"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
