@@ -8,8 +8,9 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "build-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output dist/android/index.android.bundle.js --assets-dest dist/android/assets --sourcemap-output dist/android/index.android.bundle.js.map --minify true",
-    "build-ios": "react-native bundle --platform ios --dev false --entry-file index.js --bundle-output dist/ios/index.ios.bundle.js --assets-dest dist/ios/assets --sourcemap-output dist/ios/index.ios.bundle.js.map --minify true",
+    "build-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output dist/android/index.android.bundle.js --assets-dest dist/android/assets --sourcemap-output dist/android/index.android.bundle.js.map --minify true --config biz.metro.config.j",
+    "build-ios": "cross-env PLATFORM=ios react-native bundle --platform ios --dev false --entry-file index.js --bundle-output dist/ios/index.ios.bundle.js --assets-dest dist/ios/assets --sourcemap-output dist/ios/index.ios.bundle.js.map --minify false --config biz.metro.config.js",
+    "build-common-ios": "cross-env PLATFORM=ios react-native bundle --platform ios --dev false --entry-file common.bundle.js --bundle-output dist/common/index.ios.bundle.js --sourcemap-output dist/common/index.ios.bundle.js.map --minify false --config common.metro.config.js",
     "bundle-analyze": "react-native-bundle-visualizer"
   },
   "dependencies": {
@@ -33,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
     "babel-jest": "^26.6.3",
+    "babel-plugin-import": "^1.13.5",
     "babel-plugin-lodash": "^3.3.4",
     "eslint": "^7.32.0",
     "jest": "^26.6.3",
