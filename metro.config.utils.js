@@ -1,10 +1,12 @@
-const pathSep = require('path').sep;
+const path = require('path');
+const pathSep = path.sep;
 
-function getModuleIdByPath(projectRootPath, path) {
+function getModuleIdByPath(projectRootPath, modulePath) {
   let name = '';
-  if (path.startsWith(projectRootPath)) {
-    name = path.substr(projectRootPath.length + 1);
+  if (modulePath.startsWith(projectRootPath)) {
+    name = modulePath.substr(projectRootPath.length + 1);
   }
+
   let regExp =
     pathSep === '\\' ? new RegExp('\\\\', 'gm') : new RegExp(pathSep, 'gm');
   let moduleId = name.replace(regExp, '/');

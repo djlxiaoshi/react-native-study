@@ -4,10 +4,12 @@
  *
  * @format
  */
+const path = require('path');
 const {getModuleIdByPath} = require('./metro.config.utils');
-const moduleIdsList = require('./dist/common/index_ios_module_id.json');
+const moduleIdsList = require('./multibundler/index_ios_module_id.json');
 
 const moduleIds = new Set();
+const excludeAssetsExt = ['.png', '.jpg', '.jpeg'];
 
 function init() {
   if (moduleIds == null || moduleIds.length === 0) {
@@ -19,14 +21,21 @@ function init() {
 init();
 
 function createModuleIdFactory() {
-  return path => {
-    return getModuleIdByPath(__dirname, path);
+  return modulePath => {
+    return getModuleIdByPath(__dirname, modulePath);
   };
 }
 
 // 返回false的模块 不会打入
 function processModuleFilter(module) {
   const moduleId = getModuleIdByPath(__dirname, module.path);
+
+  const extname = path.extname(moduleId);
+  // 如果是图片资源则不过滤
+  if (excludeAssetsExt.includes(extname)) {
+    return true;
+  }
+
   if (moduleIdsList.indexOf(moduleId) >= 0) {
     return false;
   }

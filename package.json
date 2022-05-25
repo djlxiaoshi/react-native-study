@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "build-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output dist/android/index.android.bundle.js --assets-dest dist/android/assets --sourcemap-output dist/android/index.android.bundle.js.map --minify true --config biz.metro.config.j",
+    "build-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output dist/android/index.android.bundle.js --assets-dest dist/android/assets --sourcemap-output dist/android/index.android.bundle.js.map --minify false --config biz.metro.config.js",
     "build-ios": "cross-env PLATFORM=ios react-native bundle --platform ios --dev false --entry-file index.js --bundle-output dist/ios/index.ios.bundle.js --assets-dest dist/ios/assets --sourcemap-output dist/ios/index.ios.bundle.js.map --minify false --config biz.metro.config.js",
     "build-common-ios": "cross-env PLATFORM=ios react-native bundle --platform ios --dev false --entry-file common.bundle.js --bundle-output dist/common/index.ios.bundle.js --sourcemap-output dist/common/index.ios.bundle.js.map --minify false --config common.metro.config.js",
     "bundle-analyze": "react-native-bundle-visualizer"
